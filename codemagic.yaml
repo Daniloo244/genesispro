@@ -1,0 +1,13 @@
+workflows:
+  genesis-pro-build:
+    name: Build Genesis Pro
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+    scripts:
+      - flutter pub get
+      - flutter create --platforms=android .
+      - flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
